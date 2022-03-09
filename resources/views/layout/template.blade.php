@@ -8,6 +8,5 @@
 </head>
 <body>
     @yield('crud')
- 
 </body>
 </html>

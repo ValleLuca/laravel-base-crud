@@ -8,6 +8,6 @@
 </head>
 <body>
     @yield('crud')
-    @dump($example)
+ 
 </body>
 </html>

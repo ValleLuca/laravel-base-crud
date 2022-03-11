@@ -1,7 +1,7 @@
 @extends('layout.template')
 
 @section('center')
-    <h1>Modifica fumetto: {{$example->name}}</h1>
+    <h1>Modifica fumetto: {{$example->title}}</h1>
     <form action="{{route("welcome.update", $example->id)}}" method="POST">
         @csrf
         @method('PUT')

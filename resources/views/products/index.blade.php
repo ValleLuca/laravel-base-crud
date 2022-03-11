@@ -1,7 +1,7 @@
 @extends('layout.template')
 
 @section('center')
-    <table class="table">
+    <table class="table table-bordered border-primary">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -16,24 +16,26 @@
         </thead>
         <tbody>
             @foreach ($example as $esempio)
-                <tr>
+                <tr class="text-center">
                     <th scope="row">{{$esempio->id}}</th>
-                    <td>{{$esempio->title}}</td>
-                    <td>{{$esempio->description}}</td>
-                    <td><img src="{{$esempio->thumb}}"></td>
-                    <td>{{$esempio->price}}</td>
-                    <td>{{$esempio->series}}</td>
-                    <td>{{$esempio->sale_date}}</td>
-                    <td>{{$esempio->type}}</td>
+                    <td class="align-middle">{{$esempio->title}}</td>
+                    <td class="align-middle">{{$esempio->description}}</td>
+                    <td class="align-middle"><img src="{{$esempio->thumb}}"></td>
+                    <td class="align-middle">{{$esempio->price}}</td>
+                    <td class="align-middle">{{$esempio->series}}</td>
+                    <td class="align-middle">{{$esempio->sale_date}}</td>
+                    <td class="align-middle">{{$esempio->type}}</td>
+                
+                    <td class="align-middle">
+                        <a href="{{route("welcome.show", $esempio->id)}}"><button type="button" class="btn btn-primary mt-1">Vedi</button></a>
+                        <a href="{{route("welcome.edit", $esempio->id)}}"><button type="button" class="btn btn-warning mt-1">Modifica</button></a>
+                        <form action="{{route("welcome.destroy", $esempio->id)}}" method="POST">
+                            @csrf
+                            @method("DELETE")
+                            <button type="submit" class="btn btn-danger mt-1">Cancella</button>
+                        </form>
+                    </td>
                 </tr>
-                <td>
-                    <a href="{{route("welcome.show", $esempio->id)}}"><button type="button" class="btn btn-primary">Vedi</button></a>
-                    <a href="{{route("welcome.edit", $esempio->id)}}"><button type="button" class="btn btn-warning">Modifica</button></a>
-                    <form action="{{route("welcome.destroy", $esempio->id)}}" method="POST">
-                        @csrf
-                        @method("DELETE")
-                        <button type="submit" class="btn btn-danger">Cancella</button>
-                    </form>
             @endforeach
         </tbody>
     </table>

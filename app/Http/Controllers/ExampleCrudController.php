@@ -61,9 +61,9 @@ class ExampleCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Example $example)
+    public function show(Example $welcome)
     {
-        return view('products.show', compact('example'));
+        return view('products.show', compact('welcome'));
     }
 
     /**
@@ -72,9 +72,9 @@ class ExampleCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Example $example)
+    public function edit(Example $welcome)
     {
-        return view('products.edit', compact('example'));
+        return view('products.edit', compact('welcome'));
     }
 
     /**
@@ -84,25 +84,25 @@ class ExampleCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Example $example)
+    public function update(Request $request, Example $welcome)
     {
         $comics = $request->all();
 
         // inserisco un nuovo record
-        $example = new Example();
-        $example->title = $comics["title"];
-        $example->description = $comics["description"];
+        $welcome = new Example();
+        $welcome->title = $comics["title"];
+        $welcome->description = $comics["description"];
         if(!empty($comics["thumb"])){
-            $example->thumb = $comics["thumb"];
+            $welcome->thumb = $comics["thumb"];
         }
-        $example->price = $comics["price"];
-        $example->series = $comics["series"];
-        $example->sale_date = $comics["sale_date"];
-        $example->type = $comics["type"];
+        $welcome->price = $comics["price"];
+        $welcome->series = $comics["series"];
+        $welcome->sale_date = $comics["sale_date"];
+        $welcome->type = $comics["type"];
 
-        $example->save();
+        $welcome->save();
 
-        return redirect()->route('welcome.show', $example->id);
+        return redirect()->route('welcome.show', $welcome->id);
     }
 
     /**
@@ -111,9 +111,9 @@ class ExampleCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Example $example)
+    public function destroy(Example $welcome)
     {
-        $example->delete();
+        $welcome->delete();
         
         return redirect()->route('welcome.index');
     }

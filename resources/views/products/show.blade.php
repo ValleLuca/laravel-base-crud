@@ -2,11 +2,11 @@
 
 @section('center')
 
-    <h1>{{$example->title}}</h1>
-    <p>{{$example->description}}</p>
-    <img src="{{$example->thumb}}">
+    <h1>{{$welcome->title}}</h1>
+    <p>{{$welcome->description}}</p>
+    <img src="{{$welcome->thumb}}">
 
-    <form action="{{route("welcome.destroy", $example->id)}}" method="POST">
+    <form action="{{route("welcome.destroy", $welcome->id)}}" method="POST">
         @csrf
         @method("DELETE")
         <button type="submit" class="btn btn-danger">Cancella</button>

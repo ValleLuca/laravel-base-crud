@@ -38,5 +38,8 @@
                 </tr>
             @endforeach
         </tbody>
+        <div class="text-center m-1">
+            <a href="{{route("welcome.create", $esempio->id)}}"><button type="button" class="btn btn-success">Aggiungi</button></a>
+        </div>
     </table>
 @endsection

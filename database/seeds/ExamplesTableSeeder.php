@@ -18,6 +18,7 @@ class ExamplesTableSeeder extends Seeder
             $newExample = new Example();
             $newExample->title = $example["title"];
             $newExample->description = $example["description"];
+            $newExample->thumb = $example["thumb"];
             $newExample->series = $example["series"];
             $newExample->price = $example["price"];
             $newExample->sale_date = $example["sale_date"];

@@ -25,7 +25,7 @@ class ExampleCrudController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.create');
     }
 
     /**
@@ -36,7 +36,23 @@ class ExampleCrudController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comics = $request->all();
+
+        // inserisco un nuovo record
+        $newExample = new Example();
+        $newExample->title = $comics["title"];
+        $newExample->description = $comics["description"];
+        if(!empty($comics["thumb"])){
+            $newExample->thumb = $comics["thumb"];
+        }
+        $newExample->price = $comics["price"];
+        $newExample->series = $comics["series"];
+        $newExample->sale_date = $comics["sale_date"];
+        $newExample->type = $comics["type"];
+
+        $newExample->save();
+
+        return redirect()->route('welcome.show', $newExample->id);
     }
 
     /**
@@ -45,9 +61,9 @@ class ExampleCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Example $example)
     {
-        //
+        return view('products.show', compact('example'));
     }
 
     /**
@@ -56,9 +72,9 @@ class ExampleCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Example $example)
     {
-        //
+        return view('products.edit', compact('example'));
     }
 
     /**
@@ -68,9 +84,25 @@ class ExampleCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Example $example)
     {
-        //
+        $comics = $request->all();
+
+        // inserisco un nuovo record
+        $example = new Example();
+        $example->title = $comics["title"];
+        $example->description = $comics["description"];
+        if(!empty($comics["thumb"])){
+            $example->thumb = $comics["thumb"];
+        }
+        $example->price = $comics["price"];
+        $example->series = $comics["series"];
+        $example->sale_date = $comics["sale_date"];
+        $example->type = $comics["type"];
+
+        $example->save();
+
+        return redirect()->route('welcome.show', $example->id);
     }
 
     /**
@@ -79,8 +111,10 @@ class ExampleCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Example $example)
     {
-        //
+        $example->delete();
+        
+        return redirect()->route('welcome.index');
     }
 }

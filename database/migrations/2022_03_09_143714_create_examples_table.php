@@ -17,6 +17,7 @@ class CreateExamplesTable extends Migration
             $table->id();
             $table->string('title', 100);
             $table->text('description');
+            $table->text('thumb'. 100);
             $table->string('series', 50);
             $table->float('price', 8, 2);
             $table->string('sale_date', 100);

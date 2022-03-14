@@ -36,9 +36,19 @@ class ExampleCrudController extends Controller
      */
     public function store(Request $request)
     {
-        $comics = $request->all();
 
-        $newExample = new Example();
+        $request->validate([
+            "title"=> "required|string|max:80|unique:examples",
+            "description"=> "required|string|max:80|unique:examples",
+            "thumb"=> "nullable|url",
+            "price"=> "required|numeric|between:0,99.99",
+            "series"=> "required|string|max:80|unique:examples",
+            "sale_date"=> "required|integer|min:1|max:80",
+            "type"=> "required|string|max:80|unique:examples",
+            
+        ]);
+
+        $comics = $request->all();
 
         /* $newExample->title = $comics["title"];
         $newExample->description = $comics["description"];
@@ -50,6 +60,7 @@ class ExampleCrudController extends Controller
         $newExample->sale_date = $comics["sale_date"];
         $newExample->type = $comics["type"]; */
 
+        $newExample = new Example();
         $newExample->fill($comics);
         $newExample->save();
 
@@ -87,9 +98,19 @@ class ExampleCrudController extends Controller
      */
     public function update(Request $request, Example $welcome)
     {
+
+        $request->validate([
+            "title"=> "required|string|max:80|unique:examples",
+            "description"=> "required|string|max:80|unique:examples",
+            "thumb"=> "nullable|url",
+            "price"=> "required|numeric|between:0,99.99",
+            "series"=> "required|string|max:80|unique:examples",
+            "sale_date"=> "required|integer|min:1|max:80",
+            "type"=> "required|string|max:80|unique:examples",
+            
+        ]);
         $comics = $request->all();
 
-        // inserisco un nuovo record
         $welcome = new Example();
 /*         $welcome->title = $comics["title"];
         $welcome->description = $comics["description"];

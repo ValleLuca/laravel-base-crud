@@ -38,9 +38,9 @@ class ExampleCrudController extends Controller
     {
         $comics = $request->all();
 
-        // inserisco un nuovo record
         $newExample = new Example();
-        $newExample->title = $comics["title"];
+
+        /* $newExample->title = $comics["title"];
         $newExample->description = $comics["description"];
         if(!empty($comics["thumb"])){
             $newExample->thumb = $comics["thumb"];
@@ -48,8 +48,9 @@ class ExampleCrudController extends Controller
         $newExample->price = $comics["price"];
         $newExample->series = $comics["series"];
         $newExample->sale_date = $comics["sale_date"];
-        $newExample->type = $comics["type"];
+        $newExample->type = $comics["type"]; */
 
+        $newExample->fill($comics);
         $newExample->save();
 
         return redirect()->route('welcome.show', $newExample->id);
@@ -90,7 +91,7 @@ class ExampleCrudController extends Controller
 
         // inserisco un nuovo record
         $welcome = new Example();
-        $welcome->title = $comics["title"];
+/*         $welcome->title = $comics["title"];
         $welcome->description = $comics["description"];
         if(!empty($comics["thumb"])){
             $welcome->thumb = $comics["thumb"];
@@ -98,8 +99,9 @@ class ExampleCrudController extends Controller
         $welcome->price = $comics["price"];
         $welcome->series = $comics["series"];
         $welcome->sale_date = $comics["sale_date"];
-        $welcome->type = $comics["type"];
+        $welcome->type = $comics["type"]; */
 
+        $welcome->fill($comics);
         $welcome->save();
 
         return redirect()->route('welcome.show', $welcome->id);

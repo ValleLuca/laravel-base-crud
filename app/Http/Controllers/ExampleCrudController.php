@@ -100,10 +100,10 @@ class ExampleCrudController extends Controller
     {
 
         $request->validate([
-            "title"=> "required|string|max:80|unique:examples",
+            "title"=> "required|string|max:80|unique:examples,title,{$welcome->id}",
             "description"=> "required|string|max:80|unique:examples",
             "thumb"=> "nullable|url",
-            "price"=> "required|numeric|between:0,99.99",
+            "price"=> "required|numeric|between:0 , 99.99",
             "series"=> "required|string|max:80|unique:examples",
             "sale_date"=> "required|integer|min:1|max:80",
             "type"=> "required|string|max:80|unique:examples",
